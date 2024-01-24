@@ -90,6 +90,7 @@ $(function() {
 window.addEventListener('scroll', function() {
     var box = document.getElementById('call-btn');
     var box2 = document.getElementById('whts-btn');
+	var title=document.getElementById('hindititle');
     if (window.scrollY >= 100) {
       box.classList.add('reveal');
     } else {
@@ -99,6 +100,11 @@ window.addEventListener('scroll', function() {
 		box2.classList.add('reveal');
 	  } else {
 		box2.classList.remove('reveal');
+	  }
+	  if (window.scrollY >= 65) {
+		title.classList.add('active');
+	  } else {
+		title.classList.remove('active');
 	  }
   });
 

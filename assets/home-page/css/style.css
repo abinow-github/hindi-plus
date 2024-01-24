@@ -62,6 +62,11 @@ a {
     display: none;
   }
 }
+@media screen and (min-width:765px) {
+  .hide-on-lap-tab{
+    display: none !important;
+  }
+}
 /* ....................... common styles END..................... */
 
 
@@ -338,7 +343,10 @@ a {
         width: auto !important; }
       .site-mobile-menu .site-nav-wrap > li > a {
         padding-left: 20px;
-        font-size: 20px; }
+        font-size: 20px; 
+        text-transform: uppercase;
+        font-weight: 600;
+      }
       .site-mobile-menu .site-nav-wrap > li > ul {
         padding: 0;
         margin: 0;
@@ -486,14 +494,22 @@ a {
         }
         @media screen and (max-width:765px) {
           .banner{
-            padding-top: 100px;
+            padding-top: 150px;
             text-align: center;
             height: auto;
+            min-height: 85vh;
             padding-bottom: 30px;
             .cnt-div{
               .bnr-whtapp{
                 border-radius: 20px;
               }
+              .title h2{
+                font-size: 2.5rem;
+              }
+            }
+            .img-div{
+              margin-top: 30px;
+              width: 90%;
             }
           }
         }
@@ -504,10 +520,63 @@ a {
           
           .cnt-div .title h2 span:after{
             width: 0;
+            transition: 1s;
+          }
+          .cnt-div .title h2 span.active:after{
+            width: 100%;
           }
           
         }
         /* ...................... header banner END ....................... */
+
+  @media screen and (max-width:765px) {/* social media icon in mobile navbar */
+    header .m-soci-div{
+      position: absolute;
+      right: 50px;
+      width: auto;
+      .abs-sci_meda-div{
+        width: fit-content;
+        height: 60px;
+        border-radius: 20px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+        gap: 10px;
+        a{
+          color: white;
+          background : var(--primary-color);
+          height: 30px;
+          width: 30px;
+          display: flex;
+          border-radius: 50%;
+          align-items: center;
+          justify-content: center;
+          font-size: 15px;
+          transform: 0.4s;
+          animation: trnsform-top 1s infinite;
+          animation-delay: 1s;
+        }
+        a:nth-child(1){
+          animation-delay: 0.5s;
+        }
+        a:nth-child(2){
+          animation-delay: 1s;
+        }
+        a:nth-child(3){
+          animation-delay: 1.7s;
+        }
+        a:nth-child(4){
+          animation-delay: 2.4s;
+        }
+        a:hover{
+          background: var(--secondary-color);
+        }
+      }
+    }
+  }
 /* ......................................... header   END ..........................................*/
 
 
@@ -743,6 +812,9 @@ a {
   .col-lg-3{
     padding: 0;
   }
+  .card hr{
+    display: none;
+  }
   .card{
     border-radius: 0;
     display: flex;
@@ -833,25 +905,34 @@ a {
   .section-3{
     width: 100%;
     overflow: hidden;
+    padding: 0;
     .col-lg-3{
       padding: 0;
+    }
+    .card hr{
+      width: 80%;
+      margin: auto;
+      height: 2px;
+      display: block;
+      color: var(--secondary-color);
     }
     .card{
       border-radius: 0;
       border: 0;
       display: flex;
-      border-bottom: 2px solid #000c3b7d;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 20px;
+      
       
       .img-div{
         height: 300px;
         overflow: hidden;
-        display: none;
       }
       .img-div img{
         width: 100%;
       }
       .card-body{
-        width: 70%;
         min-height: 300px;
         display: flex;
         flex-direction: column;
@@ -869,41 +950,10 @@ a {
     }
     .whychoose-row .col-lg-3:nth-child(odd){
       .card{
-        flex-direction: column-reverse;
-        align-items: flex-end;
+        flex-direction: column;
       }
     }
-    .whychoose-row .col-lg-3:nth-child(1){
-      .card{
-        background: url('../../img/whychooseus/curriculum-m.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        border-top: 2px solid #000c3b7d;
-      }
-    }
-    .whychoose-row .col-lg-3:nth-child(2){
-      .card{
-        background: url('../../img/whychooseus/teacher-m.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-      }
-    }
-    .whychoose-row .col-lg-3:nth-child(3){
-      .card{
-        background: url('../../img/whychooseus/online-learning-m.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-    }
-    .whychoose-row .col-lg-3:nth-child(4){
-      .card{
-        background: url('../../img/whychooseus/classroom-m.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-      }
-    }
+    
     
   }
 }
@@ -989,6 +1039,7 @@ footer{
   bottom: 30px;
   opacity: 0;
   transform: translateY(50px);
+  transition: 0.5s;
 }
 .call-btn:hover,.whts-btn:hover{
   color: white;
