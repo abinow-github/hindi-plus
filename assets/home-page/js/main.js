@@ -120,10 +120,12 @@ function closeMenu(){
 function viewMore(){
 	let more=document.getElementById('more')
 	more.classList.toggle('show');
-	let btn = document.querySelector('.rd-mre-btn');
+	let btn = document.getElementById('btn-data');
   if (more.classList.contains('show')) {
     btn.innerHTML = "View Less";
+	/* more.style.height="0" */
   } else {
+	/* more.style.height=more.scrollHeight + "px" */
     btn.innerHTML = "View More";
   }
 }

@@ -6,288 +6,73 @@
     <title>Document</title>
 </head>
 <style>
-    :root {
-	--size-header: 2.25rem;
-	--size-accordion-title: 1.25rem;
-	--size-accordion-content: 1rem;
-	--animation-speed: 100;
-	--slide-ease: cubic-bezier(0.86, 0, 0.07, 1);
-	--slide-duration: calc(400ms * 100 / var(--animation-speed));
-	--slide-delay: calc(450ms * 100 / var(--animation-speed));
-	--circle-duration: calc(900ms * 100 / var(--animation-speed));
+.btn {
+  color: #ff0000;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 0 2em;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-*,
-*::before,
-*::after {
-	position: relative;
-	left: 0;
-	top: 0;
-	box-sizing: border-box;
+.btn:hover {
+  text-decoration: none;
 }
 
-a,
-p,
-h1 {
-	margin: 0;
+.btn-1 {
+  background: #ffffff;
+  font-weight: 100;
+}
+.btn-1 svg {
+  height: 45px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.btn-1 rect {
+  fill: none;
+  stroke: #ff0000;
+  stroke-width: 2;
+  stroke-dasharray: 422, 0;
+  transition: all 0.35s linear;
 }
 
-html {
-	height: 100%;
+.btn-1:hover {
+  background: rgba(225, 51, 45, 0);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.btn-1:hover rect {
+  stroke-width: 5;
+  stroke-dasharray: 15, 310;
+  stroke-dashoffset: 48;
+  transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 
-
-html,
-body {
-	scroll-behavior: smooth;
-	scroll-padding-top: 1rem;
-}
-
-main > h1 {
-	font-size: var(--size-header);
-	margin-bottom: 1.25rem;
-	color: #fff;
-}
-
-::selection {
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-.accordion {
-	--circle-x: 1.8rem;
-	--circle-y: 0;
-	--circle-r: 200%;
-	--circle-bg: #fff;
-	color: #000;
-
-	background-color: var(--circle-bg);
-	max-width: 56ch;
-	margin-bottom: 1rem;
-	border-radius: min(8px, 0.5rem);
-
-	display: grid;
-	grid-template-rows: 0fr 0fr;
-	transition-timing-function: var(--slide-ease);
-	transition-duration: 200ms, 200ms, var(--slide-duration);
-	transition-property: opacity, box-shadow, grid-template-rows;
-	transition-delay: 0ms, 0ms, var(--slide-delay);
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-	opacity: 0.9;
-}
-
-.accordion:not(:target):hover {
-	box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.5);
-}
-
-.accordion:not(:target):active {
-	opacity: 1;
-	box-shadow: 0 4px 7px 0 rgba(206, 21, 21, 0.3);
-}
-
-.accordion,
-.content {
-	overflow: hidden;
-}
-
-.accordion:target {
-	--d: 90deg;
-	grid-template-rows: 0fr 1fr;
-	transition: grid-template-rows var(--slide-ease) var(--slide-duration)
-		var(--slide-delay);
-}
-
-.wrapper {
-	padding-block: 0 1.05rem;
-	padding-inline: 1.25rem;
-}
-
-.content {
-	font-size: var(--size-accordion-content);
-	line-height: 140%;
-}
-
-.content p {
-	margin-bottom: 1rem;
-}
-
-.content a {
-	color: currentColor;
-	font-weight: 800;
-	text-decoration: underline;
-}
-
-main :last-child,
-.content :last-child {
-	margin-bottom: 0;
-}
-
-.title a {
-	padding: 1rem 1.25rem;
-	font-size: var(--size-accordion-title);
-	font-weight: 800;
-	color: currentColor;
-	text-decoration: none;
-	display: flex;
-	flex-direction: row;
-	place-items: center;
-}
-
-.title a::before {
-	--chevron-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3C!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath fill='white' d='M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z'/%3E%3C/svg%3E");
-	content: "";
-	left: 0;
-	top: 0;
-	width: 0.65rem;
-	aspect-ratio: 320 / 512;
-	display: inline-block;
-	margin-right: 0.75rem;
-	transform: rotate(var(--d, 0deg));
-	transition: transform var(--slide-ease) var(--slide-duration)
-		var(--slide-delay);
-	mask-image: var(--chevron-icon);
-	mask-size: 100% 100%;
-	-webkit-mask-image: var(--chevron-icon);
-	-webkit-mask-size: 100% 100%;
-	background-color: currentColor;
-}
-
-.accordion::before,
-.accordion::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: var(--circle-bg);
-	mix-blend-mode: difference;
-	transform-style: preserve-3d;
-	transition-timing-function: ease;
-	transition-property: opacity, clip-path, visibility;
-	pointer-events: none;
-	clip-path: circle(var(--r) at var(--circle-x) var(--circle-y));
-	border-radius: inherit;
-	z-index: 4;
-}
-
-.accordion::before {
-	--r: 0%;
-	transition-delay: var(--circle-duration), var(--circle-duration), 0ms;
-	transition-duration: 0ms, var(--circle-duration), 0ms;
-	opacity: 0;
-}
-
-.accordion:target::before {
-	--r: var(--circle-r);
-	transition-delay: 0ms, 0ms, 0ms;
-	transition-duration: 0ms, var(--circle-duration), 0ms;
-	opacity: 1;
-}
-
-.accordion::after {
-	--r: var(--circle-r);
-	transition-delay: 0ms, 0ms, var(--circle-duration);
-	transition-duration: 0ms, var(--circle-duration), 0ms;
-	visibility: hidden;
-	opacity: 1;
-}
-
-.accordion:target:after {
-	--r: 0%;
-	transition-delay: 0ms, 0ms, 0ms;
-	transition-duration: 0ms, 0ms, 0ms;
-	visibility: visible;
-	opacity: 0;
-}
-
-.title a:focus-visible {
-	background-color: hsl(0, 100%, 90%);
-	outline: none;
-}
-
-.accordion:target .title a:focus-visible {
-	background-color: hsl(183, 100%, 93%);
-}
 
 </style>
 <body>
    
 
-        <section class="accordion" id="overview">
-            <h1 class="title"><a href="#overview">Overview</a></h1>
-            <div class="content">
-                <div class="wrapper">
-                    <p>
-                        This CodePen demonstrates how we can animate the opening and closing
-                        states of an accordion with fancy reveal animation using only CSS. This
-                        concept is suitable for creating <strong>FAQ sections</strong>,
-                        <strong>Table of Contents</strong>, and more.
-                    </p>
-                </div>
-            </div>
-        </section>
-    
-        <section class="accordion" id="how-does-it-work">
-            <h1 class="title"><a href="#how-does-it-work">How does it work?</a></h1>
-            <div class="content">
-                <div class="wrapper">
-                    <p>
-                        We cannot transition height or any CSS property from zero to auto. If we
-                        want to smoothly expand a collapsed accordion, we could set a
-                        <code>max-height</code> and transition the <code>height</code> property
-                        to a large value when we expand the section. However,
-                        <a href="https://css-tricks.com/using-css-transitions-auto-dimensions/#aa-there-are-two-crucial-downsides-to-this" target="_blank">it may not properly work</a>
-                        if the content is larger than the <code>max-height</code>.
-                    </p>
-                    <p>
-                        So, here we create a CSS grid with a grid item. Then we transition the
-                        <code>grid-template-rows</code> property from <code>0fr</code> to
-                        <code>1fr</code> and the grid item transitions to its content height.
-                    </p>
-                    <p>
-                        I used CSS <code>clip-path</code> and <code>mix-blend-mode</code> to
-                        animate the background and text color of the accordion. Each accordion
-                        has two pseudo-elements. We know that <code>opacity</code>,
-                        <code>clip-path</code> and, <code>visibility</code> are animatable CSS
-                        properties. So when the accordion is selected using the
-                        <code>:target</code> pseudo-class, we transition the clip-path circle
-                        radius to 200% of the
-                        <code>::before</code>
-                        pseudo-element. When the accordion is not selected, we do the same with
-                        the
-                        <code>::after</code> but this time with a delay. This creates an
-                        illusion as it appears to clip from inside.
-                    </p>
-                    <p>
-                        Since the accordion's title is an anchor element, users can also
-                        navigate through the items with their keyboard.
-                    </p>
-                </div>
-            </div>
-        </section>
-    
-        <section class="accordion" id="inspiration">
-            <h1 class="title"><a href="#inspiration">Inspiration</a></h1>
-            <div class="content">
-                <div class="wrapper">
-                    <p>
-                        In a recent video, Kevin showed us a way to animate height from zero to
-                        auto value. Seeing that, I couldn't resist experimenting with the idea.
-                        Then I came up with this CSS-only accordion component and added the
-                        reveal animation too!
-                    </p>
-                    <p>
-                        I would highly recommend watching
-                        <a href="https://youtu.be/B_n4YONte5A" target="_blank">his video</a>,
-                        where he beautifully explains the technique and points out how he
-                        discovered it. Also, read
-                        <a href="https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/" target="_blank">Keith J. Grant's post</a>
-                        and
-                        <a href="https://nemzes.net/posts/animating-height-auto/" target="_blank">Nelson Menezes's post</a>
-                        on the same topic.
-                    </p>
-                </div>
-            </div>
-        </section>
+	<section class="buttons">
+	  <div class="container">
+		
+		<a href="https://twitter.com/Dave_Conner" class="btn btn-1">
+		  <svg>
+			<rect x="0" y="0" fill="none" width="100%" height="100%"/>
+		  </svg>
+		 Hover
+		</a>
+		
+	  </div>
+	</section>
     
 </body>
 </html>

@@ -599,7 +599,6 @@ a {
 /* ..................................................... section-1 about ............................. */
 .section-1{
   position: relative;
-  background: linear-gradient(45deg, #0c1137, #31365d);
   .abs-sci_meda-div{
     position: absolute;
     width: fit-content;
@@ -646,27 +645,100 @@ a {
 
   .cnt-div{
     .heading{
-      color: white;
+      color: var(--primary-color);
+      span{
+        color: var(--secondary-color);
+      }
     }
-    p{
-      color: white;
-    }
+    
     .rd-mre-btn{
       padding: 10px 15px;
      border: 2px solid white;
-     border-radius: 15px;
-     color: white;
+     color: var(--secondary-color);
+     background: white;
      width: fit-content;
-     background-color: transparent;
+     font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 2em;
+  position: relative;
+  max-width: 160px;
+  transition: 0.4s;
+    }.rd-mre-btn svg {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
     }
-    #more{
+    .rd-mre-btn rect {
+      fill: none;
+      stroke: var(--secondary-color);
+      stroke-width: 2;
+      stroke-dasharray: 422, 0;
+      transition: all 0.35s linear;
+    }
+    
+    .rd-mre-btn:hover {
+      letter-spacing: 1px;
+      color: var(--secondary-color);
+    }
+    .rd-mre-btn:hover rect {
+      stroke-width: 5;
+      stroke-dasharray: 15, 310;
+      stroke-dashoffset: 48;
+      transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+
+    .more{
       height: 0;
       overflow: hidden;
       transition: 1s;
     }
-    #more.show{
-      height: fit-content;
+    .more.show{
+      height: 400px;
     }
+    @media screen and (max-width:1200px) {
+      .more.show{
+        height: 450px;
+      }
+    }
+    @media screen and (max-width:992px) {
+      .more.show{
+        height: 350px;
+      }
+    }
+    @media screen and (max-width:765px) {
+      .more.show{
+        height: 435px;
+      }
+    }
+    @media screen and (max-width:482px) {
+      .more.show{
+        height: 485px;
+      }
+    }
+    @media screen and (max-width:449px) {
+      .more.show{
+        height: 515px;
+      }
+    }
+    @media screen and (max-width:400px) {
+      .more.show{
+        height: 580px;
+      }
+    }
+    @media screen and (max-width:363px) {
+      .more.show{
+        height: 630px;
+      }
+    }
+    @media screen and (max-width:344px) {
+      .more.show{
+        height: 710px;
+      }
+    }
+    
   }
   .img-div{
     width: auto;
@@ -679,7 +751,8 @@ a {
       width: 55%;
       right: 35px;
       bottom: -35px;
-      border: 5px solid white;
+      border-bottom: 5px solid var(--primary-color);
+      border-right: 5px solid var(--secondary-color);
       padding: 10px;
 
     }
